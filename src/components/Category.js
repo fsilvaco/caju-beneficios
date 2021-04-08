@@ -5,10 +5,14 @@ import { SvgUri } from "react-native-svg";
 const Category = (props) => {
   const { name, value, background, icon } = props;
 
-  const formatter = new Intl.NumberFormat("pt-BR", {
-    minimumFractionDigits: 2,
-    maximumFractionDigits: 2,
-  });
+  const formatToBRL = (number) => {
+    let value = new Intl.NumberFormat("pt-BR", {
+      minimumFractionDigits: 2,
+      maximumFractionDigits: 2,
+    }).format(number);
+
+    return value;
+  };
 
   return (
     <TouchableOpacity
@@ -19,7 +23,7 @@ const Category = (props) => {
       <View style={[s.card, { backgroundColor: background }]}>
         <SvgUri width="45" style={s.svg} uri={icon} />
         <Text style={s.money}>R$</Text>
-        <Text style={s.value}>{formatter.format(value)}</Text>
+        <Text style={s.value}>{formatToBRL(value)}</Text>
         <Text style={s.name}>{name}</Text>
       </View>
     </TouchableOpacity>

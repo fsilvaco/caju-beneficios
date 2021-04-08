@@ -9,7 +9,7 @@ export default function App() {
   const renderItem = ({ item }) => (
     <Category
       name={item.title}
-      value="0"
+      value={item.value}
       background={item.color}
       icon={item.icon}
     />
@@ -19,12 +19,7 @@ export default function App() {
     <SafeAreaView>
       <View style={[styles.container, styles.resetPadding]}>
         <Header />
-        <FlatList
-          showsHorizontalScrollIndicator={false}
-          horizontal
-          data={DATA}
-          renderItem={renderItem}
-        />
+        <FlatList horizontal data={DATA} renderItem={renderItem} />
         <View />
         <View style={styles.container}>
           <StatusBar style="auto" />

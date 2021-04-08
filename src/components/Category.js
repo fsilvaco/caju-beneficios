@@ -30,12 +30,12 @@ const s = StyleSheet.create({
   card: {
     padding: 20,
     marginRight: 10,
-    width: 130,
+    width: 140,
     borderRadius: 15,
   },
 
   money: {
-    color: "#ccc",
+    color: "#eee",
     marginTop: 30,
   },
   value: {
@@ -48,7 +48,7 @@ const s = StyleSheet.create({
     color: "#fff",
     textTransform: "uppercase",
     fontSize: 12,
-    fontWeight: "800",
+    fontWeight: "bold",
   },
 });
 

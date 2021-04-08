@@ -32,8 +32,8 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     backgroundColor: "#fff",
-    paddingHorizontal: 24,
-    paddingTop: 20,
+    paddingHorizontal: 28,
+    paddingTop: 35,
   },
   resetPadding: {
     paddingRight: 0,

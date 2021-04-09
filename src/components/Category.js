@@ -1,9 +1,12 @@
 import React from "react";
 import { Text, View, StyleSheet, TouchableOpacity } from "react-native";
 import { SvgUri } from "react-native-svg";
+import { useNavigation } from "@react-navigation/native";
 
 const Category = (props) => {
   const { name, value, background, icon } = props;
+
+  const navigation = useNavigation();
 
   const formatToBRL = (number) => {
     let value = new Intl.NumberFormat("pt-BR", {
@@ -17,7 +20,7 @@ const Category = (props) => {
   return (
     <TouchableOpacity
       onPress={() => {
-        console.log(name, "was pressed");
+        navigation.navigate("Transfer", { name: name });
       }}
     >
       <View style={[s.card, { backgroundColor: background }]}>

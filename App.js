@@ -1,41 +1,38 @@
-import { StatusBar } from "expo-status-bar";
-import React from "react";
-import { FlatList, SafeAreaView, StyleSheet, Text, View } from "react-native";
-import Category from "./src/components/Category";
-import Header from "./src/components/Header";
-import DATA from "./data";
+// In App.js in a new project
 
-export default function App() {
-  const renderItem = ({ item }) => (
-    <Category
-      name={item.title}
-      value={item.value}
-      background={item.color}
-      icon={item.icon}
-    />
-  );
+import * as React from "react";
+import { NavigationContainer, DefaultTheme } from "@react-navigation/native";
+import { createStackNavigator } from "@react-navigation/stack";
+import Home from "./src/screens/Home";
+import Transfer from "./src/screens/Transfer";
 
+const Stack = createStackNavigator();
+
+const MyTheme = {
+  ...DefaultTheme,
+  colors: {
+    ...DefaultTheme.colors,
+    primary: "rgb(255, 45, 85)",
+    background: "#fff",
+  },
+};
+
+function App() {
   return (
-    <SafeAreaView>
-      <View style={[styles.container, styles.resetPadding]}>
-        <Header />
-        <FlatList horizontal data={DATA} renderItem={renderItem} />
-        <View />
-        <View style={styles.container}>
-          <StatusBar style="auto" />
-        </View>
-      </View>
-    </SafeAreaView>
+    <NavigationContainer theme={MyTheme}>
+      <Stack.Navigator
+        screenOptions={{ headerShown: false }}
+        initialRouteName="Home"
+      >
+        <Stack.Screen name="Home" component={Home} />
+        <Stack.Screen
+          options={{ headerBackTitle: "Voltar", title: false }}
+          name="Transfer"
+          component={Transfer}
+        />
+      </Stack.Navigator>
+    </NavigationContainer>
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    backgroundColor: "#fff",
-    paddingHorizontal: 28,
-    paddingTop: 35,
-  },
-  resetPadding: {
-    paddingRight: 0,
-  },
-});
+export default App;

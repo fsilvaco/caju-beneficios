@@ -1,14 +1,20 @@
 import React from "react";
-import { Button, SafeAreaView, Text, View, StyleSheet } from "react-native";
+import { SafeAreaView, Text, View, StyleSheet, TextInput, TouchableOpacity } from "react-native";
+import Service from "../service/service"
+import Button from "../components/Button"
 
 function Transfer({ navigation, route }) {
-  const { name } = route.params;
+  const { value } = route.params;
 
   return (
     <SafeAreaView>
       <View style={s.container}>
-        <Button onPress={() => navigation.goBack()} title="Voltar" />
-        <Text>Você deseja transferir da categoria {name}</Text>
+        <TouchableOpacity onPress={() => navigation.goBack()}>
+          <Text>Voltar</Text>
+        </TouchableOpacity>
+        <Text style={s.title}>Quanto retirar deste benefícios?</Text>
+        <TextInput style={s.input} value={Service.formatToBRL(value)} />
+        <Button text="Continuar" />
       </View>
     </SafeAreaView>
   );
@@ -19,6 +25,14 @@ const s = StyleSheet.create({
     paddingHorizontal: 28,
     paddingTop: 35,
   },
+  title: {
+    fontSize: 24,
+    fontWeight: "bold"
+  },
+  input: {
+    marginVertical: 40,
+    fontSize: 24,
+  }
 });
 
 export default Transfer;

@@ -12,7 +12,7 @@ const Category = (props) => {
   return (
     <TouchableOpacity
       onPress={() => {
-        navigation.navigate("Transfer", { name: name });
+        navigation.navigate("Transfer", { value: value });
       }}
     >
       <View style={[s.card, { backgroundColor: background }]}>

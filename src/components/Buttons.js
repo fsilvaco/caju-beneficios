@@ -4,8 +4,14 @@ import { useNavigation } from "@react-navigation/native";
 
 
 export const ButtonAction = (props) => {
+    const navigation = useNavigation();
+
+    const goToList = () => {
+        navigation.navigate("ListCategory");
+    }
+
     return (
-        <TouchableOpacity style={s.btn}>
+        <TouchableOpacity onPress={goToList} style={s.btn}>
             <Text style={s.text}>{props.text}</Text>
         </TouchableOpacity>
     )

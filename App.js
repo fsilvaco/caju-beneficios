@@ -5,6 +5,7 @@ import { NavigationContainer, DefaultTheme } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 import Home from "./src/screens/Home";
 import Transfer from "./src/screens/Transfer";
+import ListCategory from "./src/screens/ListCategory";
 
 const Stack = createStackNavigator();
 
@@ -30,6 +31,7 @@ function App() {
           name="Transfer"
           component={Transfer}
         />
+        <Stack.Screen name="ListCategory" component={ListCategory} />
       </Stack.Navigator>
     </NavigationContainer>
   );

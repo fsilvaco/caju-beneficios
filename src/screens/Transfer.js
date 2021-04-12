@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { SafeAreaView, Text, View, StyleSheet, TextInput, TouchableOpacity } from "react-native";
 import Service from "../service/service"
 import { ButtonAction, ButtonGoBack } from "../components/Buttons"
@@ -6,13 +6,15 @@ import { ButtonAction, ButtonGoBack } from "../components/Buttons"
 function Transfer({ route }) {
   const { value } = route.params;
 
+  const [transferAmount, setTransferAmount] = useState()
+
   return (
     <SafeAreaView>
       <View style={s.container}>
         <ButtonGoBack />
         <Text style={s.title}>Quanto retirar deste benefícios?</Text>
-        <TextInput style={s.input} value={Service.formatToBRL(value)} />
-        <ButtonAction text="Continuar" />
+        <TextInput onChangeText={text => setTransferAmount(text)} style={s.input} placeholder={Service.formatToBRL(value)} defaultValue={Service.formatToBRL(value)} />
+        <ButtonAction TranferAmount={transferAmount} text="Continuar" />
       </View>
     </SafeAreaView>
   );

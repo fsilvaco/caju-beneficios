@@ -3,11 +3,13 @@ import { StyleSheet, SafeAreaView, Text, View, TouchableOpacity } from "react-na
 import { ButtonGoBack } from "../components/Buttons";
 import categories from "../../data"
 
-export default function ListCategory() {
+export default function ListCategory({ route }) {
+    const { TranferAmount } = route.params;
     return (
         <SafeAreaView>
             <View style={s.container}>
                 <ButtonGoBack />
+                <Text>Vou tranferir {TranferAmount}</Text>
                 {categories.map(c => (
                     <TouchableOpacity onPress={() => console.warn(`Categoria ${c.title} clicada!`)}>
                         <Text>{c.title}</Text>

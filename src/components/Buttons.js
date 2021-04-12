@@ -7,7 +7,7 @@ export const ButtonAction = (props) => {
     const navigation = useNavigation();
 
     const goToList = () => {
-        navigation.navigate("ListCategory");
+        navigation.navigate("ListCategory", { TranferAmount: props.TranferAmount });
     }
 
     return (

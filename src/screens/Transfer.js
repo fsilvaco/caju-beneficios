@@ -1,20 +1,18 @@
 import React from "react";
 import { SafeAreaView, Text, View, StyleSheet, TextInput, TouchableOpacity } from "react-native";
 import Service from "../service/service"
-import Button from "../components/Button"
+import { ButtonAction, ButtonGoBack } from "../components/Buttons"
 
-function Transfer({ navigation, route }) {
+function Transfer({ route }) {
   const { value } = route.params;
 
   return (
     <SafeAreaView>
       <View style={s.container}>
-        <TouchableOpacity onPress={() => navigation.goBack()}>
-          <Text>Voltar</Text>
-        </TouchableOpacity>
+        <ButtonGoBack />
         <Text style={s.title}>Quanto retirar deste benefícios?</Text>
         <TextInput style={s.input} value={Service.formatToBRL(value)} />
-        <Button text="Continuar" />
+        <ButtonAction text="Continuar" />
       </View>
     </SafeAreaView>
   );

@@ -6,14 +6,14 @@ import { ButtonAction, ButtonGoBack } from "../components/Buttons"
 function Transfer({ route }) {
   const { value } = route.params;
 
-  const [transferAmount, setTransferAmount] = useState()
+  const [transferAmount, setTransferAmount] = useState(0)
 
   return (
     <SafeAreaView>
       <View style={s.container}>
         <ButtonGoBack />
         <Text style={s.title}>Quanto retirar deste benefícios?</Text>
-        <TextInput onChangeText={text => setTransferAmount(text)} style={s.input} placeholder={Service.formatToBRL(value)} defaultValue={Service.formatToBRL(value)} />
+        <TextInput onChangeText={text => setTransferAmount(text)} style={s.input} placeholder={Service.formatToBRL(value)} />
         <ButtonAction TranferAmount={transferAmount} text="Continuar" />
       </View>
     </SafeAreaView>

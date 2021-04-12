@@ -5,8 +5,9 @@ import { SvgUri } from "react-native-svg";
 import categories from "../../data"
 import Service from "../service/service";
 
-export default function ListCategory({ route }) {
+export default function ListCategory({ route, navigation }) {
     const { TranferAmount } = route.params;
+
     return (
         <SafeAreaView>
             <View style={s.container}>
@@ -15,7 +16,7 @@ export default function ListCategory({ route }) {
                 <Text style={{ fontSize: 16, marginBottom: 10 }}>Quero transferir R${Service.formatToBRL(TranferAmount)} para...</Text>
                 <ScrollView>
                     {categories.map(c => (
-                        <TouchableOpacity onPress={() => console.warn(`Categoria ${c.title} clicada!`)}>
+                        <TouchableOpacity onPress={() => navigation.navigate("Confirmation")}>
                             <View style={s.card}>
                                 <View style={[s.svg, { backgroundColor: c.color }]}>
                                     <SvgUri width="30" uri={c.icon} />

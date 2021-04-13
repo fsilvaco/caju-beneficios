@@ -6,13 +6,9 @@ import Header from "../components/Header";
 import DATA from "../../data";
 
 export default function Home({ navigation }) {
-  console.log(navigation);
   const renderItem = ({ item }) => (
     <Category
-      name={item.title}
-      value={item.value}
-      background={item.color}
-      icon={item.icon}
+      item={item}
     />
   );
 

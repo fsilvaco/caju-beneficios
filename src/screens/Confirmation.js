@@ -1,34 +1,38 @@
 import React from "react"
 import { StyleSheet, SafeAreaView, View, Text } from "react-native"
+import { ScrollView } from "react-native-gesture-handler";
 import { ButtonGoBack } from "../components/Buttons"
 import Title from "../components/Title"
+import Service from "../service/service";
 
 export default function Confirmation({ route }) {
-    const { category } = route.params;
+    const { category, item, tranferAmount } = route.params;
 
     return (
         <SafeAreaView>
             <View style={s.container}>
                 <ButtonGoBack />
                 <Title title="Confirme a transação" />
-                <View style={s.card}>
-                    <View>
-                        <Text>Retirar de:</Text>
-                        <Text style={{ fontSize: 18, fontWeight: "bold" }}>xxx</Text>
+                <ScrollView>
+                    <View style={s.card}>
+                        <View>
+                            <Text>Retirar de:</Text>
+                            <Text style={{ fontSize: 18, fontWeight: "bold" }}>{item.title}</Text>
+                        </View>
+                        <View>
+                            <Text style={{ fontSize: 18 }}>- R$ {Service.formatToBRL(tranferAmount)}</Text>
+                        </View>
                     </View>
-                    <View>
-                        <Text style={{ fontSize: 18 }}>- R$ xx,xx</Text>
+                    <View style={s.card}>
+                        <View>
+                            <Text>Depositar em:</Text>
+                            <Text style={{ fontSize: 18, fontWeight: "bold" }}>{category.title}</Text>
+                        </View>
+                        <View>
+                            <Text style={{ fontSize: 18 }}>+ R$ {Service.formatToBRL(tranferAmount)}</Text>
+                        </View>
                     </View>
-                </View>
-                <View style={s.card}>
-                    <View>
-                        <Text>Depositar em:</Text>
-                        <Text style={{ fontSize: 18, fontWeight: "bold" }}>{category.title}</Text>
-                    </View>
-                    <View>
-                        <Text style={{ fontSize: 18 }}>+ R$ xx,xx</Text>
-                    </View>
-                </View>
+                </ScrollView>
             </View>
         </SafeAreaView>
     )

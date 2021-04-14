@@ -1,21 +1,32 @@
 import React from "react"
-import { StyleSheet, SafeAreaView, View, Text } from "react-native"
+import { StyleSheet, SafeAreaView, View, Text, Button, Alert } from "react-native"
 import { ScrollView } from "react-native-gesture-handler";
 import { ButtonGoBack } from "../components/Buttons"
 import Title from "../components/Title"
 import Service from "../service/service";
 
-export default function Confirmation({ route }) {
+export default function Confirmation({ route, navigation }) {
     const { category, item, tranferAmount } = route.params;
 
-    const subtractValues = (n1, n2) => {
+    const subtract = (n1, n2) => {
         let total = parseInt(n1) - parseInt(n2)
         return Service.formatToBRL(total)
     }
 
-    const sumValues = (n1, n2) => {
+    const sum = (n1, n2) => {
         let total = parseInt(n1) + parseInt(n2)
         return Service.formatToBRL(total)
+    }
+
+    const confirmTranfer = () => {
+        Alert.alert(
+            "Transação confirmada!",
+            "Pronto já identificamos a sua transação. Aguarde alguns instantes e verifique os seus saldos.",
+            [
+                { text: "OK", onPress: () => navigation.navigate('Home') }
+            ]
+        );
+        // navigation.navigate('Home')
     }
 
     return (
@@ -47,7 +58,7 @@ export default function Confirmation({ route }) {
                         <Text style={{ marginTop: 10, fontSize: 16, fontWeight: "bold" }}>{item.title}</Text>
                         <View style={{ flexDirection: "row", justifyContent: "space-between", marginTop: 5 }}>
                             <Text>Saldo atualizado</Text>
-                            <Text>R$ {subtractValues(item.value, tranferAmount)}</Text>
+                            <Text>R$ {subtract(item.value, tranferAmount)}</Text>
                         </View>
                         <View style={{ flexDirection: "row", justifyContent: "space-between", marginTop: 5 }}>
                             <Text>Saldo anterior</Text>
@@ -59,7 +70,7 @@ export default function Confirmation({ route }) {
                         <Text style={{ marginTop: 10, fontSize: 16, fontWeight: "bold" }}>{category.title}</Text>
                         <View style={{ flexDirection: "row", justifyContent: "space-between", marginTop: 5 }}>
                             <Text>Saldo atualizado</Text>
-                            <Text>R$ {sumValues(category.value, tranferAmount)}</Text>
+                            <Text>R$ {sum(category.value, tranferAmount)}</Text>
                         </View>
                         <View style={{ flexDirection: "row", justifyContent: "space-between", marginTop: 5 }}>
                             <Text>Saldo anterior</Text>
@@ -67,6 +78,7 @@ export default function Confirmation({ route }) {
                         </View>
                     </View>
                 </ScrollView>
+                <Button onPress={confirmTranfer} title="Confirmar"></Button>
             </View>
         </SafeAreaView>
     )

@@ -7,6 +7,7 @@ import Service from "../service/service";
 
 export default function ListCategory({ route, navigation }) {
     const { TranferAmount, item } = route.params;
+    console.log(`Deseja remover ${TranferAmount} da categoria ${item.title}`)
 
     return (
         <SafeAreaView>
@@ -16,7 +17,7 @@ export default function ListCategory({ route, navigation }) {
                 <Text style={{ fontSize: 16, marginBottom: 10 }}>Quero transferir R${Service.formatToBRL(TranferAmount)} para...</Text>
                 <ScrollView>
                     {categories.map(c => (
-                        <TouchableOpacity onPress={() => navigation.navigate("Confirmation", { category: c, item: item, tranferAmount: TranferAmount })}>
+                        <TouchableOpacity key={c.title} onPress={() => navigation.navigate("Confirmation", { category: c, item: item, tranferAmount: TranferAmount })}>
                             <View style={s.card}>
                                 <View style={[s.svg, { backgroundColor: c.color }]}>
                                     <SvgUri width="30" uri={c.icon} />

@@ -7,6 +7,7 @@ import Home from "./src/screens/Home";
 import Transfer from "./src/screens/Transfer";
 import ListCategory from "./src/screens/ListCategory";
 import Confirmation from "./src/screens/Confirmation";
+import CategoriesProvider from "./src/context/Categories"
 
 const Stack = createStackNavigator();
 
@@ -21,21 +22,24 @@ const MyTheme = {
 
 function App() {
   return (
-    <NavigationContainer theme={MyTheme}>
-      <Stack.Navigator
-        screenOptions={{ headerShown: false }}
-        initialRouteName="Home"
-      >
-        <Stack.Screen name="Home" component={Home} />
-        <Stack.Screen
-          options={{ headerBackTitle: "Voltar", title: false }}
-          name="Transfer"
-          component={Transfer}
-        />
-        <Stack.Screen name="ListCategory" component={ListCategory} />
-        <Stack.Screen name="Confirmation" component={Confirmation} />
-      </Stack.Navigator>
-    </NavigationContainer>
+    <CategoriesProvider>
+
+      <NavigationContainer theme={MyTheme}>
+        <Stack.Navigator
+          screenOptions={{ headerShown: false }}
+          initialRouteName="Home"
+        >
+          <Stack.Screen name="Home" component={Home} />
+          <Stack.Screen
+            options={{ headerBackTitle: "Voltar", title: false }}
+            name="Transfer"
+            component={Transfer}
+          />
+          <Stack.Screen name="ListCategory" component={ListCategory} />
+          <Stack.Screen name="Confirmation" component={Confirmation} />
+        </Stack.Navigator>
+      </NavigationContainer>
+    </CategoriesProvider>
   );
 }
 

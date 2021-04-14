@@ -4,21 +4,41 @@ import { ScrollView } from "react-native-gesture-handler";
 import { ButtonGoBack } from "../components/Buttons"
 import Title from "../components/Title"
 import Service from "../service/service";
+import { useCategories } from "../context/Categories"
+
+import DATA from "../../data"
 
 export default function Confirmation({ route, navigation }) {
+    const { setCategory } = useCategories()
     const { category, item, tranferAmount } = route.params;
+    console.log(`Estou removendo da categoria ${item.title}`)
+    console.log(`Quero enviar para categoria ${category.title}`)
 
     const subtract = (n1, n2) => {
         let total = parseInt(n1) - parseInt(n2)
-        return Service.formatToBRL(total)
+        return total
     }
 
     const sum = (n1, n2) => {
         let total = parseInt(n1) + parseInt(n2)
-        return Service.formatToBRL(total)
+        return total
     }
 
     const confirmTranfer = () => {
+        for (var i = 0; i < DATA.length; i++) {
+            if (DATA[i].id === item.id) {
+                DATA[i].value = subtract(item.value, tranferAmount)
+                break
+            }
+        }
+        for (var i = 0; i < DATA.length; i++) {
+            if (DATA[i].id === category.id) {
+                DATA[i].value = sum(category.value, tranferAmount)
+                break
+            }
+        }
+        setCategory(DATA)
+
         Alert.alert(
             "Transação confirmada!",
             "Pronto já identificamos a sua transação. Aguarde alguns instantes e verifique os seus saldos.",
@@ -26,7 +46,6 @@ export default function Confirmation({ route, navigation }) {
                 { text: "OK", onPress: () => navigation.navigate('Home') }
             ]
         );
-        // navigation.navigate('Home')
     }
 
     return (

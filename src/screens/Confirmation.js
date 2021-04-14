@@ -11,8 +11,7 @@ import DATA from "../../data"
 export default function Confirmation({ route, navigation }) {
     const { setCategory } = useCategories()
     const { category, item, tranferAmount } = route.params;
-    console.log(`Estou removendo da categoria ${item.title}`)
-    console.log(`Quero enviar para categoria ${category.title}`)
+    console.log(`Screen:Confirmation: Categoria que irá receber [${category.title}]`)
 
     const subtract = (n1, n2) => {
         let total = parseInt(n1) - parseInt(n2)
@@ -38,12 +37,13 @@ export default function Confirmation({ route, navigation }) {
             }
         }
         setCategory(DATA)
+        console.log(`Screen:Confirmation:confirmTranfer: De [${item.title}] para [${category.title}] valor (R$ ${tranferAmount})`)
 
         Alert.alert(
             "Transação confirmada!",
             "Pronto já identificamos a sua transação. Aguarde alguns instantes e verifique os seus saldos.",
             [
-                { text: "OK", onPress: () => navigation.navigate('Home') }
+                { text: "OK", onPress: () => { navigation.navigate('Home') } }
             ]
         );
     }

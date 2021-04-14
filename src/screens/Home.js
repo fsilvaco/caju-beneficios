@@ -16,10 +16,10 @@ export default function Home({ navigation }) {
   }
 
   const onRefresh = React.useCallback(() => {
-    console.log("Atualizando...")
+    console.log("Screen:Home:onRefresh: Recebendo novo saldo...")
     setRefreshing(true);
     wait(2000).then(() => setRefreshing(false));
-    console.log("Saldo atualizado!")
+    console.log("Screen:Home:onRefresh: Saldo atualizado com sucesso!")
   }, []);
 
   const { category } = useCategories()

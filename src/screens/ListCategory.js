@@ -7,7 +7,7 @@ import Service from "../service/service";
 
 export default function ListCategory({ route, navigation }) {
     const { TranferAmount, item } = route.params;
-    console.log(`Deseja remover ${TranferAmount} da categoria ${item.title}`)
+    console.log(`Screen:ListCategory: Valor que irá ser transferido (R$${TranferAmount}) da categoria [${item.title}]`)
 
     return (
         <SafeAreaView>

@@ -5,7 +5,7 @@ import { ButtonAction, ButtonGoBack } from "../components/Buttons"
 
 function Transfer({ route }) {
   const { item } = route.params;
-  console.log(`Categoria que deseja tirar um valor ID ${item.id} - ${item.title}`)
+  console.log(`Screen:Tranfer: Categoria selecionada: [${item.title}]`)
 
   const [transferAmount, setTransferAmount] = useState(0)
 

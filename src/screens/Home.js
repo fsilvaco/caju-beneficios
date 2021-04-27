@@ -1,3 +1,4 @@
+import { useNavigation } from "@react-navigation/core";
 import { StatusBar } from "expo-status-bar";
 import React from "react";
 import { FlatList, SafeAreaView, StyleSheet, RefreshControl, View } from "react-native";
@@ -7,7 +8,9 @@ import Header from "../components/Header";
 import { useCategories } from "../context/Categories"
 
 
-export default function Home({ navigation }) {
+export default function Home() {
+
+  const navigation = useNavigation()
 
   const [refreshing, setRefreshing] = React.useState(false);
 

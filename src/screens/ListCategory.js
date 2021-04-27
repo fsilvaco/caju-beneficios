@@ -4,8 +4,12 @@ import { ButtonGoBack } from "../components/Buttons";
 import { SvgUri } from "react-native-svg";
 import categories from "../../data"
 import Service from "../service/service";
+import { useNavigation, useRoute } from "@react-navigation/core";
 
-export default function ListCategory({ route, navigation }) {
+export default function ListCategory() {
+    const route = useRoute()
+    const navigation = useNavigation()
+
     const { TranferAmount, item } = route.params;
     console.log(`Screen:ListCategory: Valor que irá ser transferido (R$${TranferAmount}) da categoria [${item.title}]`)
 

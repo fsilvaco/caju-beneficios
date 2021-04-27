@@ -34,6 +34,10 @@ export default function Home({ navigation }) {
   const renderItem = ({ item }) => (
     <Category
       item={item}
+      onPress={() => {
+        navigation.navigate("Transfer", { item: item });
+      }}
+
     />
   );
 

@@ -7,8 +7,12 @@ import Service from "../service/service";
 import { useCategories } from "../context/Categories"
 
 import DATA from "../../data"
+import { useNavigation, useRoute } from "@react-navigation/core";
 
-export default function Confirmation({ route, navigation }) {
+export default function Confirmation() {
+    const route = useRoute()
+    const navigation = useNavigation()
+
     const { setCategory } = useCategories()
     const { category, item, tranferAmount } = route.params;
     console.log(`Screen:Confirmation: Categoria que irá receber [${category.title}]`)

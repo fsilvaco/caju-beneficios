@@ -5,15 +5,13 @@ import { useNavigation } from "@react-navigation/native";
 import Service from "../service/service"
 
 const Category = (props) => {
-  const { item } = props;
+  const { item, ...rest } = props;
 
   const navigation = useNavigation();
 
   return (
     <TouchableOpacity
-      onPress={() => {
-        navigation.navigate("Transfer", { item: item });
-      }}
+      {...rest}
     >
       <View style={[s.card, { backgroundColor: item.color }]}>
         <SvgUri width="45" style={s.svg} uri={item.icon} />

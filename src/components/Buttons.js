@@ -3,16 +3,16 @@ import { StyleSheet, Text, TouchableOpacity } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 
 
-export const ButtonAction = (props) => {
-    const navigation = useNavigation();
+export const Button = (props) => {
 
-    const goToList = () => {
-        navigation.navigate("ListCategory", { TranferAmount: props.TranferAmount, item: props.item });
-    }
+    const { text, ...rest } = props
 
     return (
-        <TouchableOpacity onPress={goToList} style={s.btn}>
-            <Text style={s.text}>{props.text}</Text>
+        <TouchableOpacity
+            style={s.btn}
+            {...rest}
+        >
+            <Text style={s.text}>{text}</Text>
         </TouchableOpacity>
     )
 }

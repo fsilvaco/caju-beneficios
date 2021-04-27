@@ -1,10 +1,15 @@
 import React, { useState } from "react";
 import { SafeAreaView, Text, View, StyleSheet, TextInput, TouchableOpacity } from "react-native";
 import Service from "../service/service"
-import { ButtonAction, ButtonGoBack } from "../components/Buttons"
+import { Button, ButtonAction, ButtonGoBack } from "../components/Buttons"
+import { useNavigation, useRoute } from "@react-navigation/core";
 
-function Transfer({ route }) {
-  const { item } = route.params;
+function Transfer() {
+  const router = useRoute();
+  const navigation = useNavigation()
+
+  const { item } = router.params;
+
   console.log(`Screen:Tranfer: Categoria selecionada: [${item.title}]`)
 
   const [transferAmount, setTransferAmount] = useState(0)
@@ -15,7 +20,9 @@ function Transfer({ route }) {
         <ButtonGoBack />
         <Text style={s.title}>Quanto retirar deste benefícios?</Text>
         <TextInput onChangeText={text => setTransferAmount(text)} style={s.input} placeholder={Service.formatToBRL(item.value)} />
-        <ButtonAction item={item} TranferAmount={transferAmount} text="Continuar" />
+        <Button
+          onPress={() => navigation.navigate("ListCategory", { TranferAmount: transferAmount, item: item })}
+          text="Continuar" />
       </View>
     </SafeAreaView>
   );

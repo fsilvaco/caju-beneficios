@@ -23,7 +23,7 @@
 
 ## :page_with_curl: Sobre
 
-Quando iniciei na Calindra, tive a oportunidade de conhecer os benefícios da empresa [Caju](https://www.caju.com.br/).
+Quando iniciei na minha atual empresa, a Calindra, tive a oportunidade de conhecer os benefícios da empresa [Caju](https://www.caju.com.br/).
 
 A critério de estudos, resolvi criar a principal funcionalidade do app usando React native.
 

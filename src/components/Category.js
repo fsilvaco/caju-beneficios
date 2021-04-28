@@ -1,13 +1,10 @@
 import React from "react";
 import { Text, View, StyleSheet, TouchableOpacity } from "react-native";
 import { SvgUri } from "react-native-svg";
-import { useNavigation } from "@react-navigation/native";
 import Service from "../service/service"
 
 const Category = (props) => {
   const { item, ...rest } = props;
-
-  const navigation = useNavigation();
 
   return (
     <TouchableOpacity

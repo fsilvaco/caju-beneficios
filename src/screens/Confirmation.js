@@ -1,7 +1,7 @@
 import React from "react"
-import { StyleSheet, SafeAreaView, View, Text, Button, Alert } from "react-native"
+import { StyleSheet, SafeAreaView, View, Text, Alert } from "react-native"
 import { ScrollView } from "react-native-gesture-handler";
-import { ButtonGoBack } from "../components/Buttons"
+import { Button, ButtonGoBack } from "../components/Buttons"
 import Title from "../components/Title"
 import Service from "../service/service";
 import { useCategories } from "../context/Categories"
@@ -101,7 +101,9 @@ export default function Confirmation() {
                         </View>
                     </View>
                 </ScrollView>
-                <Button onPress={confirmTranfer} title="Confirmar"></Button>
+                <View style={{ marginTop: 30 }}>
+                    <Button onPress={confirmTranfer} text="Confirmar" />
+                </View>
             </View>
         </SafeAreaView>
     )

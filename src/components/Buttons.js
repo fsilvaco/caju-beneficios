@@ -2,6 +2,8 @@ import React from "react"
 import { StyleSheet, Text, TouchableOpacity } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 
+import { Ionicons } from '@expo/vector-icons';
+
 
 export const Button = (props) => {
 
@@ -21,7 +23,7 @@ export const ButtonGoBack = () => {
     const navigation = useNavigation();
     return (
         <TouchableOpacity style={s.goBack} onPress={() => navigation.goBack()}>
-            <Text>Voltar</Text>
+            <Ionicons name="arrow-back" size={24} color="black" />
         </TouchableOpacity>
     )
 }
